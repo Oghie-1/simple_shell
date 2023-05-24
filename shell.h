@@ -13,6 +13,28 @@
 #define win(x) write(STDOUT_FILENO, x, _strlen(x))
 #define din() write(STDOUT_FILENO, "###\n", 4)
 
+#define ERR_EXIT(a, b, c)\
+do {\
+write(STDERR_FILENO, a, _strlen(a));\
+write(STDERR_FILENO, ": ", 2);\
+write(STDERR_FILENO, b, _strlen(b));\
+write(STDERR_FILENO, ": exit: Illegal number: ", 24);\
+write(STDERR_FILENO, c, _strlen(c));\
+write(STDERR_FILENO, "\n", 1);\
+} while (0)
+
+#define ERR_EXE(a, b, c)\
+do {\
+write(STDERR_FILENO, a, _strlen(a));\
+write(STDERR_FILENO, ": ", 2);\
+write(STDERR_FILENO, b, _strlen(b));\
+write(STDERR_FILENO, ": ", 2);\
+write(STDERR_FILENO, c, _strlen(c));\
+write(STDERR_FILENO, ": not found", 11);\
+write(STDERR_FILENO, "\n", 1);\
+} while (0)
+
+
 /* Function prototypes */
 size_t _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
@@ -25,7 +47,7 @@ char *_strdup(const char *str);
 char *_intstr(int num);
 char *var_finder(const char *var, char **env);
 void free_array(char **array);
-int life(char **array, char **argv, char **env, char **p_t, int i, int *e_c);
+int stress(char **array, char **argv, char **env, char **p_t, int i, int *e_c);
 int run_shell(int go);
 
 #endif /* SHELL_HEADER_H */

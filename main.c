@@ -60,7 +60,7 @@ free(line);
 }
 /* Tokenizes the line using the delimiter "\n " and frees the line */
 
-if (life(array, argv, env, path_token, i, &exit_code))
+if (stress(array, argv, env, path_token, i, &exit_code))
 break;
 /* Executes the command and handles shell functionality */
 

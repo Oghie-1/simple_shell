@@ -6,7 +6,7 @@
  * @av: command line arguments
  * Return: 1 on failure, 0 on success
  */
-int fork_helper(char **av)
+int fork_help(char **av)
 {
 pid_t forked_val;
 
