@@ -42,7 +42,7 @@ print_env(env); /* Print env var*/
 else if (array != NULL && access(array[0], F_OK) == -1) /* If command is not executable*/
 {
 ptr = array[0];
-array[0] = smart_cat(p_t, array[0]); /*Concatenate command with path */
+array[0] = auto_cat(p_t, array[0]); /*Concatenate command with path */
 
 if (array[0] == NULL)
 {

@@ -39,7 +39,7 @@ write(STDERR_FILENO, "\n", 1);\
 size_t _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
 char **tokenizer(char *str, const char *delim);
-char *smart_cat(char **path, char *name);
+char *auto_cat(char **path, char *name);
 int fork_help(char **av);
 int print_env(char **env);
 int _atoi(int *status, const char *s);
@@ -48,7 +48,7 @@ char *_intstr(int num);
 char *var_finder(const char *var, char **env);
 void free_array(char **array);
 int stress(char **array, char **argv, char **env, char **p_t, int i, int *e_c);
-int run_shell(int go);
+int shell_run(int go);
 
 #endif /* SHELL_HEADER_H */
 

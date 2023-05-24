@@ -39,7 +39,7 @@ write(STDIN_FILENO, "\033[1;35m$\033[0m ", 13);
 go = getline(&line, &count, stdin);
 /* Reads a line of input from the user */
 
-if (run_shell(go))
+if (shell_run(go))
 {
 free(line);
 break;
