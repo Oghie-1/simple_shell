@@ -14,13 +14,13 @@
 #define din() write(STDOUT_FILENO, "###\n", 4)
 
 /* Function prototypes */
-int _strlen(char *s);
+size_t _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
 char **tokenizer(char *str, const char *delim);
 char *smart_cat(char **path, char *name);
 int forking_helper(char **av);
 int print_env(char **env);
-int custom_atoi(int *status, const char *s);
+int _atoi(int *status, const char *s);
 char *_strdup(const char *str);
 char *_itoa(int num);
 char *var_finder(const char *var, char **env);

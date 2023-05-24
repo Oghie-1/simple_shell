@@ -3,20 +3,20 @@
 /**
  * _strlen - Measures the length of a string.
  *
- * @s: Passed string.
- * Return: Length of string.
+ * @s: Pointer to the string.
+ * Return: Length of the string.
  *
  *
  */
 
-int _strlen(char *s)
-{
-int i = 0;
+size_t _strlen(const char *s)
 
-while (s[i])
 {
-i++;
+size_t length = 0;
+
+while (s[length] != '\0')
+length++;
+
+return length;
 }
 
-return (i);
-}
