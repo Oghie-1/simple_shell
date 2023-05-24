@@ -14,7 +14,7 @@
 #define din() write(STDOUT_FILENO, "###\n", 4)
 
 /* Function prototypes */
-size_t _strlen(const char *s);
+int _strlen(char *s);
 int _strcmp(const char *s1, const char *s2);
 char **tokenizer(char *str, const char *delim);
 char *smart_cat(char **path, char *name);
