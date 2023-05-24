@@ -45,7 +45,7 @@ int print_env(char **env);
 int _atoi(int *status, const char *s);
 char *_strdup(const char *str);
 char *_intstr(int num);
-char *var_finder(const char *var, char **env);
+char *path_finder(const char *var, char **env);
 void free_array(char **array);
 int stress(char **array, char **argv, char **env, char **p_t, int i, int *e_c);
 int shell_run(int go);

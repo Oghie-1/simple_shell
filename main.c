@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv, char **env)
 {
-char **free_path_token = tokenizer(var_finder("PATH", env), ":=");
+char **free_path_token = tokenizer(path_finder("PATH", env), ":=");
 /* Tokenizes the "PATH" environmental variable using the delimiter ":=" */
 
 char **path_token = free_path_token + 1;
