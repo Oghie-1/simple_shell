@@ -14,11 +14,11 @@ return (0);
 /* If command is "exit" */
 if (!_strcmp(args[0], "exit"))
 /* Call shell_exit function */
-shell_exit(args);
+exit_shell(args);
 /* If command is "env" */
 else if (!_strcmp(args[0], "env"))
 /* Call shell_env function */
-shell_env();
+set_environment_variable();
 /* If command is "setenv" */
 else if (!_strcmp(args[0], "setenv"))
 /* Call shell_setenv function */
@@ -30,15 +30,15 @@ shell_unsetenv(args);
 /* If command is "help" */
 else if (!_strcmp(args[0], "help"))
 /* Call shell_help function */
-shell_help();
+show_help();
 /* If command is "cd" */
 else if (!_strcmp(args[0], "cd"))
 /* Call shell_cd function */	
-shell_cd(args);
+change_directory(args);
 /* If command is "clear" */
 else if (!_strcmp(args[0], "clear"))
 /* Call shell_clear function */
-shell_clear(args);
+clear_screen(args);
 else
 /* Command is not a built-in function */
 return (0);

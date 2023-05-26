@@ -7,7 +7,7 @@
  * Return: void.
  */
 
-void shell_exit(char **args)
+void exit_shell(char **args)
 {
 int status = 0;
 

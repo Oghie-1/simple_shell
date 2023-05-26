@@ -138,7 +138,7 @@ return (NULL);
  *
  * Return: The integer value of the string.
  */
-int _atoi(const char *str)
+int convert_string_to_integer(const char *str)
 {
 int i, sign;
 unsigned int num;
@@ -161,13 +161,13 @@ return (num * sign);
 }
 
 /**
- **_memset - fills memory with a constant byte
+ ** fill_memory_with_character - fills memory with a constant byte
  *@s: the pointer to the memory area
  *@b: the byte to fill *s with
  *@n: the amount of bytes to be filled
  *Return: (s) a pointer to the memory area s
  */
-char *_memset(char *s, char b, unsigned int n)
+char *fill_memory_with_character(char *s, char b, unsigned int n)
 {
 unsigned int i;
 
@@ -177,7 +177,7 @@ return (s);
 }
 
 /**
- * _memcpy - function that copies memory area
+ * copy_memory_block - function that copies memory area
  *
  * @dest: buffer where we will copy to
  * @src: what we are to copy
@@ -186,7 +186,7 @@ return (s);
  * Return: Always 0 (Success)
 */
 
-char *_memcpy(char *dest, char *src, unsigned int n)
+char *copy_memory_block(char *dest, char *src, unsigned int n)
 {
 unsigned int i;
 
@@ -196,7 +196,7 @@ return (dest);
 }
 
 /**
- * _realloc - reallocates a block of memory
+ * _reallocate_zero - reallocates a block of memory
  * @ptr: pointer to previous malloc'ated block
  * @old_size: byte size of previous block
  * @new_size: byte size of new block

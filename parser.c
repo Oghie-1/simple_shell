@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * tokenize - parsing user input into arguments
+ *  tokenize_string - parsing user input into arguments
  *            by splits an array string into tokens using a delimiter.
  * @str: the string to be tokenized.
  * @delim: the delimiter used to split the string.
@@ -62,4 +62,3 @@ tokens = tokenize(tmp, " \t\r\n\a");
 free(tmp);
 return (tokens);
 }
-

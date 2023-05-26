@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * shell_hlp - shows help  for built-in commands
+ * show_hlp - shows help  for built-in commands
  */
 
-void shell_hlp(void)
+void show_help(void)
 {
 _puts("\nShell Version 1.0.0\n\n");
 _puts("Usage: ./hsh\n\n");

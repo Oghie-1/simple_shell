@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * shell_setenv - Set the value of an environment variable
+ * set_environment_variable - Set the value of an environment variable
  * @args: Arguments (name and value of the environment variable)
  *
  * Return: 0 on success, -1 on failure
  */
 
-int shell_setenv(char **args)
+int set_environment_variable(char **args)
 {
 char *name, *value;
 
@@ -20,7 +20,7 @@ return -1;
 name = args[1];
 value = args[2];
 
-if (setenv(name, value, 1) != 0)
+if (set_environment_variable(name, value, 1) != 0)
 {
 print_error-message("setenv");
 return -1;
@@ -35,7 +35,7 @@ return 0;
  * Return: 0 on success, -1 on failure
  */
 
-int shell_unsetenv(char **args)
+int unset_environment_variable(char **args)
 {
 char *name;
 
@@ -47,7 +47,7 @@ return -1;
 
 name = args[1];
 
-if (unsetenv(name) != 0)
+if (unset_environment_variable(name) != 0)
 {
 print_error_message("unsetenv");
 return -1;

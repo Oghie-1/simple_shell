@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * shell_env - Prints all the environment variables.
+ * display_environment - Prints all the environment variables.
  *
  * Return: 1 to continue executing,
  *         or 0 to exit.
  */
-int shell_env(void)
+int display_environment(void)
 {
 int i;
 

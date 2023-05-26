@@ -73,6 +73,7 @@ free_array(array);
 /* Frees the arrays used for tokenization */
 
 return exit_code;
+
 /* Returns the exit code */
 
 /**

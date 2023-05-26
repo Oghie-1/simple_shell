@@ -6,9 +6,9 @@
  *
  * Return: Nothing
  */
-void handle_sigint(int sig)
+void handle_sigint(int signal)
 {
-(void) sig;
+(void) signal;
 _putchar('\n');
 prompt();
 }
@@ -19,9 +19,9 @@ prompt();
  *
  * Return: Nothing
  */
-void handle_sigquit(int sig)
+void handle_sigquit(int signal)
 {
-(void) sig;
+(void) signal;
 _puterror("Quit (core dumped)\n");
 exit(EXIT_SUCCESS);
 }
@@ -32,10 +32,9 @@ exit(EXIT_SUCCESS);
  *
  * Return: Nothing
  */
-void handle_sigstp(int sig)
+void handle_sigstp(int signal)
 {
-(void) sig;
+(void) signal;
 _puts("\n");
 prompt();
 }
-
