@@ -22,7 +22,7 @@ nread = getline(&input, &(size_t){0}, stdin);
 if (nread == -1)
 {
 free(input);
-_puts("\n");
+puts("\n");
 return NULL;
 }
 

@@ -12,31 +12,31 @@ int check_for_builtin(char **args)
 if (!args[0])
 return (0);
 /* If command is "exit" */
-if (!_strcmp(args[0], "exit"))
+if (!strcmp(args[0], "exit"))
 /* Call shell_exit function */
 exit_shell(args);
 /* If command is "env" */
-else if (!_strcmp(args[0], "env"))
+else if (!strcmp(args[0], "env"))
 /* Call shell_env function */
-set_environment_variable();
+shell_setenv(args);
 /* If command is "setenv" */
-else if (!_strcmp(args[0], "setenv"))
+else if (!strcmp(args[0], "setenv"))
 /* Call shell_setenv function */
 shell_setenv(args);
 /* If command is "unsetenv" */
-else if (!_strcmp(args[0], "unsetenv"))
+else if (!strcmp(args[0], "unsetenv"))
 /* Call shell_unsetenv function */
 shell_unsetenv(args);
 /* If command is "help" */
-else if (!_strcmp(args[0], "help"))
+else if (!strcmp(args[0], "help"))
 /* Call shell_help function */
 show_help();
 /* If command is "cd" */
-else if (!_strcmp(args[0], "cd"))
+else if (!strcmp(args[0], "cd"))
 /* Call shell_cd function */	
 change_directory(args);
 /* If command is "clear" */
-else if (!_strcmp(args[0], "clear"))
+else if (!strcmp(args[0], "clear"))
 /* Call shell_clear function */
 clear_screen(args);
 else

@@ -203,7 +203,7 @@ return (dest);
  *
  * Return: pointer to da ol'block nameen.
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 char *p;
 
@@ -239,7 +239,7 @@ return (p);
  *         or NULL if it fails
 */
 
-void *_calloc(unsigned int nmemb, unsigned int size)
+void *calloc(unsigned int nmemb, unsigned int size)
 {
 char *p;
 
@@ -250,7 +250,7 @@ p = malloc(nmemb * size);
 if (p == NULL)
 return (NULL);
 
-_memset(p, 0, nmemb * size);
+memset(p, 0, nmemb * size);
 
 return (p);
 }
@@ -262,7 +262,7 @@ return (p);
  *
  * Return: pointer to destination
  */
-char *_strcpy(char *dest, char *src)
+char *strcpy(char *dest, char *src)
 {
 int i = 0;
 
@@ -284,7 +284,7 @@ return (dest);
  *
  * Return: pointer to destination buffer
  */
-char *_strcat(char *dest, const char *src)
+char *strcat(char *dest, const char *src)
 {
 char *ret = dest;
 
@@ -302,7 +302,7 @@ return (ret);
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(const char *str)
+char *strdup(const char *str)
 {int length = 0;
 char *ret;
 
@@ -324,7 +324,7 @@ return (ret);
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c)
+int putchar(char c)
 {
 return (write(1, &c, 1));
 }
@@ -338,7 +338,7 @@ return (write(1, &c, 1));
  *
  * Return: the number of bytes in the initial segment
  */
-unsigned int _strspn(char *s, char *accept)
+unsigned int get_initial_substring_length(char *s, char *accept)
 {
 unsigned int i, j;
 

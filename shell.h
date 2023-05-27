@@ -58,6 +58,9 @@ void exit_shell(char **args);
 /* Change the current directory */
 void change_directory(char **args);
 /* Set an environment variable */
+int shell_setenv(char **args);
+int shell_unsetenv(char **args);
+
 int set_environment_variable(char **args);
 /* Unset an environment variable */
 int unset_environment_variable(char **args);
@@ -104,7 +107,7 @@ char *find_character(char *s, char c);
 /* Find a substring in a string */
 char *find_substring(char *haystack, char *needle);
 /* Copy a string */
-char *copy_string(char *dest, char *src);
+char *copy_string(char *dest,const char *src);
 /* Duplicate a string */
 char *duplicate_string(const char *str);
 /* Concatenate two strings */
@@ -114,11 +117,11 @@ unsigned int get_initial_substring_length(char *s, char *accept);
 /* Print a character */
 int print_character(char c);
 /* Fill a block of memory with a character */
-char *fill_memory_with_character(char *s, char c, unsigned int n);
+void *fill_memory_with_character(void *s, char c, unsigned int n);
 /* Convert a string to an integer */
 int convert_string_to_integer(const char *str);
 /* Copy a block of memory */
-char *copy_memory_block(char *dest, char *src, unsigned int n);
+void *copy_memory_block(void *dest, void *src, unsigned int n);
 /* Allocate zeroed memory */
 void *allocate_zeroed_memory(unsigned int nmemb, unsigned int size);
 /* Reallocate memory */

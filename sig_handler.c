@@ -9,7 +9,7 @@
 void handle_sigint(int signal)
 {
 (void) signal;
-_putchar('\n');
+putchar('\n');
 prompt();
 }
 
@@ -22,7 +22,7 @@ prompt();
 void handle_sigquit(int signal)
 {
 (void) signal;
-_puterror("Quit (core dumped)\n");
+perror("Quit (core dumped)\n");
 exit(EXIT_SUCCESS);
 }
 
@@ -35,6 +35,6 @@ exit(EXIT_SUCCESS);
 void handle_sigstp(int signal)
 {
 (void) signal;
-_puts("\n");
+puts("\n");
 prompt();
 }

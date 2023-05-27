@@ -13,7 +13,7 @@ int status = 0;
 
 if (args[1] != NULL)
 {
-status = _atoi(args[1]);
+status = atoi(args[1]);
 }
 
 free_token_array(args);

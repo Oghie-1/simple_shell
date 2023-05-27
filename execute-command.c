@@ -26,7 +26,6 @@ return 1;
 }
 if (id == 0)
 {
-envp[0] = get_path();
 envp[1] = NULL;
 cmd_path = NULL;
 if (argv[0][0] != '/')
@@ -36,7 +35,7 @@ cmd_path = argv[0];
 if (execve(cmd_path, argv, envp) == -1)
 {
 perror(argv[0]);
-free_tokens(argv);
+free_token_array(argv);
 free_last_input();
 exit(EXIT_FAILURE);
 }
