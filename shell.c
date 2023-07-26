@@ -6,6 +6,24 @@
  * @argv: arrays of CLI arguments
  * Return: 0.
  */
+
+/* Function to handle errors and exit */
+void handle_error(const char *message)
+{
+fprintf(stderr, "Error: %s\n", message);
+exit(EXIT_FAILURE);
+}
+
+/* Function to free allocated memory in args[] */
+void free_memory(char *args[])
+{
+for (int i = 0; args[i] != NULL; i++)
+{
+    free(args[i]);
+    args[i] = NULL;
+}
+}
+
 int main(int argc, char **argv)
 {
 char *command;
@@ -54,6 +72,23 @@ break;
 }
 
 execute_command(args);
+}
+
+/* Function to handle errors and exit */
+void handle_error(const char *message)
+{
+fprintf(stderr, "Error: %s\n", message);
+exit(EXIT_FAILURE);
+}
+
+/* Function to free allocated memory in args[] */
+void free_memory(char *args[])
+{
+for (int i = 0; args[i] != NULL; i++)
+{
+free(args[i]);
+args[i] = NULL;
+}
 }
 
 free(command);
