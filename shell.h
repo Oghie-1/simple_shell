@@ -40,6 +40,24 @@ void free_memory(char *args[]);
 extern char **environ;
 char *program_name;
 
+/* Function to handle errors and exit */
+void handle_error(const char *message)
+{
+fprintf(stderr, "Error: %s\n", message);
+exit(EXIT_FAILURE);
+}
+
+/* Function to free allocated memory in args[] */
+void free_memory(char *args[])
+{
+for (int i = 0; args[i] != NULL; i++)
+{
+free(args[i]);
+args[i] = NULL;
+}
+}
+
+
 #if 1
 
 char *shell;
