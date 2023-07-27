@@ -5,6 +5,7 @@ char *read_command()
 char *buffer = NULL;
 size_t bufsize = 0;
 ssize_t characters = getline(&buffer, &bufsize, stdin);
+char *temp = buffer;
 
 if (characters == -1)
 {
@@ -27,7 +28,6 @@ return NULL;
 buffer[strcspn(buffer, "\n")] = '\0';
 
 /* Check for an empty command (only whitespace characters) */
-char *temp = buffer;
 while (*temp != '\0')
 {
 if (!isspace(*temp))

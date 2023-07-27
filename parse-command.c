@@ -45,6 +45,9 @@ void parse_command(char *command, char *args[])
 int i = 0;
 char *token = command;
 
+char *token_end;
+size_t token_len;
+
 while (*token != '\0' && i < MAX_NUM_ARGS)
 {
 token = skip_whitespace(token);
@@ -52,9 +55,8 @@ token = skip_whitespace(token);
 /* Handle quoted strings */
 if (is_quote_char(*token))
 {
-char quote_char = *token;
 token++; /* Move past the quote character */
-char *token_end = find_next_token(token);
+token_end = find_next_token(token);
 
 if (*token_end == '\0')
 {
@@ -63,7 +65,7 @@ if (*token_end == '\0')
 }
 
 /* Allocate memory for the token (excluding quotes) */
-size_t token_len = token_end - token;
+token_len = token_end - token;
 args[i] = (char *)malloc(token_len + 1);
 if (args[i] == NULL)
 {
@@ -80,11 +82,9 @@ token = token_end + 1;
 }
 else
 {
-/* Non-quoted token handling (as before) */
-char *token_end = find_next_token(token);
 
 /* Allocate memory for the token */
-size_t token_len = token_end - token;
+token_len = token_end - token;
 args[i] = (char *)malloc(token_len + 1);
 if (args[i] == NULL)
 {

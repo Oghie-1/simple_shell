@@ -7,6 +7,8 @@ volatile sig_atomic_t child_running = 0;
 /* Signal handler for SIGINT */
 void sigint_handler(int sig)
 {
+(void)sig;  /* Suppress unused parameter warning*/
+printf("\n");
 if (child_running)
 {
 /* If a child process is running, forward the SIGINT to the child process */
