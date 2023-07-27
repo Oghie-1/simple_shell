@@ -9,8 +9,8 @@ exit(EXIT_FAILURE);
 
 /* Function to free allocated memory in args[] */
 void free_memory(char *args[])
-int i;
 {
+int i;
 for (i = 0; args[i] != NULL; i++)
 {
 free(args[i]);
@@ -61,6 +61,7 @@ if (strcmp(args[0], "exit") == 0)
 {
 free_memory(args); /* Free allocated memory in args[] */
 free(command);     /* Free dynamically allocated memory for command */
+command = NULL; /*Set command to NULL to avoid issues */
 break;
 }
 
