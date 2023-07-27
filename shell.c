@@ -1,38 +1,13 @@
 #include "shell.h"
 
-/**
- * main - main shell program
- * @argc: number of arguments
- * @argv: arrays of CLI arguments
- * Return: 0.
- */
-
-/* Function to handle errors and exit */
-void handle_error(const char *message)
-{
-fprintf(stderr, "Error: %s\n", message);
-exit(EXIT_FAILURE);
-}
-
-/* Function to free allocated memory in args[] */
-void free_memory(char *args[])
-{
-for (int i = 0; args[i] != NULL; i++)
-{
-    free(args[i]);
-    args[i] = NULL;
-}
-}
-
 int main(int argc, char **argv)
 {
 char *command;
 size_t n = 0;
 char *args[MAX_NUM_ARGS + 1];
 
-#if 1
+/* Set the shell name */
 shell = *argv;
-#endif
 
 (void)argc;
 
@@ -40,8 +15,7 @@ if (!isatty(STDIN_FILENO))
 {
 if (getline(&command, &n, stdin) == -1)
 {
-perror("Error: getline() failed\n");
-return (1);
+handle_error("getline() failed");
 }
 
 command[strcspn(command, "\n")] = '\0';
@@ -49,7 +23,7 @@ parse_command(command, args);
 execute_command(args);
 
 free(command);
-return (0);
+return 0;
 }
 
 while (1)
@@ -59,8 +33,7 @@ command = read_command();
 printf("</> ");
 if (getline(&command, &n, stdin) == -1)
 {
-perror("Error: getline() failed\n");
-break;
+handle_error("getline() failed");
 }
 
 command[strcspn(command, "\n")] = '\0';
@@ -68,30 +41,15 @@ parse_command(command, args);
 
 if (strcmp(args[0], "exit") == 0)
 {
+free_memory(args); /* Free allocated memory in args[] */
+free(command);     /* Free dynamically allocated memory for command */
 break;
 }
 
 execute_command(args);
+free_memory(args); /* Free allocated memory in args[] */
+free(command);     /* Free dynamically allocated memory for command */
 }
 
-/* Function to handle errors and exit */
-void handle_error(const char *message)
-{
-fprintf(stderr, "Error: %s\n", message);
-exit(EXIT_FAILURE);
+return 0;
 }
-
-/* Function to free allocated memory in args[] */
-void free_memory(char *args[])
-{
-for (int i = 0; args[i] != NULL; i++)
-{
-free(args[i]);
-args[i] = NULL;
-}
-}
-
-free(command);
-return (0);
-}
-

@@ -2,10 +2,15 @@
 
 void display_prompt()
 {
-char cwd[1024];
-if (getcwd(cwd, sizeof(cwd)) != NULL) {
+char *cwd = getcwd(NULL, 0); /* Use dynamic memory allocation */
+
+if (cwd != NULL)
+{
 printf("%s@%s$ ", getenv("USER"), cwd);
-} else {
+free(cwd); /* Free the dynamically allocated memory for cwd */
+}
+else
+{
 perror("Error getting current working directory");
 printf("shell$ ");
 }
