@@ -23,7 +23,6 @@ COMMAND_NOT_FOUND
 
 /*Prototypes */
 void parse_command(char *command, char *args[]);
-void execute_command(char *args[]);
 void display_prompt();
 char *read_command();
 void handle_sigint(int sig);
