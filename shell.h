@@ -28,6 +28,9 @@ char *read_command();
 void handle_sigint(int sig);
 ExecutionResult execute_command(char *args[]);
 
+*Function to set up signal handlers * /
+void setup_signal_handlers();
+
 /* Error handling function */
 void handle_error(const char *message);
 
