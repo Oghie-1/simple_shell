@@ -34,7 +34,7 @@ else if (pid > 0)
 if (waitpid(pid, &status, 0) == -1)
 {
 perror("Error: waitpid");
-return EXECUTION_FAILURE;
+return (EXECUTION_FAILURE);
 }
 
 /* Check if the child process terminated normally */
@@ -45,31 +45,32 @@ int exit_status = WEXITSTATUS(status);
 
 if (exit_status == 0)
 {
-return EXECUTION_SUCCESS;
+return (EXECUTION_SUCCESS);
 }
 else
 {
 /* Command executed but returned non-zero status */
-return EXECUTION_FAILURE;
+return (EXECUTION_FAILURE);
 }
 }
 else if (WIFSIGNALED(status))
 {
 /* The child process was terminated by a signal */
-fprintf(stderr, "%s: %d: %s terminated by signal %d\n", program_name, line_number, args[0], WTERMSIG(status));
-return EXECUTION_FAILURE;
+fprintf(stderr, "%s: %d: %s terminated by signal %d\n", 
+program_name, line_number, args[0], WTERMSIG(status));
+return (EXECUTION_FAILURE);
 }
 else
 {
 /* Some other error in the child process */
 fprintf(stderr, "Error: child process did not terminate normally\n");
-return EXECUTION_FAILURE;
+return (EXECUTION_FAILURE);
 }
 }
 else
 {
 /* Fork failed */
 perror("Error: failed to fork\n");
-return FORK_FAILURE;
+return (FORK_FAILURE);
 }
 }
