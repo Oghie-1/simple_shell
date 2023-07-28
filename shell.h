@@ -15,6 +15,9 @@ void parse_command(char *command, char *args[]);
 void execute_command(char *args[]);
 void displayShellPrompt(void);
 
+/* Declare the environ variable */
+extern char **environ;
+
 #if 1
 char *shellName; /* Variable to hold the name of the shell program */
 int lineNumber; /* Variable to keep track of the line number in the shell */

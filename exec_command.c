@@ -6,7 +6,7 @@
  */
 void execute_command(char *args[])
 {
-
+extern char **environ;
 int status;
 pid_t pid;
 
@@ -32,6 +32,19 @@ exit_status = atoi(args[1]);
 
 /*exit the shell with the specified status  */
 exit(exit_status);
+}
+
+/* Handle the "env" command */
+if (strcmp(args[0], "env") == 0)
+{
+/* Print the current environment variables */
+char *env_var = *environ; /* Get the first environment variable */
+while (env_var != NULL)
+{
+printf("%s\n", env_var); /* Print each environment variable */
+env_var = *(environ++); /* Move to the next environment variable */
+}
+return;
 }
 
 /* execute other non-built-in commands using fork and execvp as before */
