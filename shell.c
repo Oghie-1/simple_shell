@@ -1,74 +1,60 @@
 #include "shell.h"
 
-/* Function to handle errors and exit */
-void handle_error(const char *message)
-{
-fprintf(stderr, "Error: %s\n", message);
-exit(EXIT_FAILURE);
-}
-
-/* Function to free allocated memory in args[] */
-void free_memory(char *args[])
-{
-int i;
-for (i = 0; args[i] != NULL; i++)
-{
-free(args[i]);
-args[i] = NULL;
-}
-}
-
+/**
+ * main - Main shell program
+ * @argc: Number of arguments (unused)
+ * @argv: Array of command-line arguments (unused)
+ * Return: 0.
+ */
 int main(int argc, char **argv)
 {
-char *command;
+char *command = NULL;
 size_t n = 0;
 char *args[MAX_NUM_ARGS + 1];
 
-/* Set the shell name */
-shell = *argv;
+#if 1
+shellName = *argv; /* Save the shell program name */
+#endif
 
-(void)argc;
+(void)argc; /* Suppress unused parameter warning */
 
+/* Check if the shell is run in non-interactive mode */
 if (!isatty(STDIN_FILENO))
 {
 if (getline(&command, &n, stdin) == -1)
 {
-handle_error("getline() failed");
+perror("Error: getline() failed\n");
+return 1;
+}
+command[strcspn(command, "\n")] = '\0'; /* Remove the newline character from the command */
+parse_command(command, args); /* Parse the command into arguments */
+execute_command(args); /* Execute the parsed command */
+free(command);
+return 0;
 }
 
-command[strcspn(command, "\n")] = '\0';
-parse_command(command, args);
-execute_command(args);
+/* Interactive mode */
+while (1)
+{
+displayShellPrompt(); /* Display the shell prompt (username@cwd$) */
+if (getline(&command, &n, stdin) == -1)
+{
+perror("Error: getline() failed\n");
+break;
+}
+command[strcspn(command, "\n")] = '\0'; /* Remove the newline character from the command */
+parse_command(command, args); /* Parse the command into arguments */
+
+/* Check if the user wants to exit the shell */
+if (strcmp(args[0], "exit") == 0)
+{
+break;
+}
+
+execute_command(args); /* Execute the parsed command */
+}
 
 free(command);
 return 0;
 }
 
-while (1)
-{
-display_prompt();
-command = read_command();
-printf("shell/afro: ");
-if (getline(&command, &n, stdin) == -1)
-{
-handle_error("getline() failed");
-}
-
-command[strcspn(command, "\n")] = '\0';
-parse_command(command, args);
-
-if (strcmp(args[0], "exit") == 0)
-{
-free_memory(args); /* Free allocated memory in args[] */
-free(command);     /* Free dynamically allocated memory for command */
-command = NULL; /*Set command to NULL to avoid issues */
-break;
-}
-
-execute_command(args);
-free_memory(args); /* Free allocated memory in args[] */
-free(command);     /* Free dynamically allocated memory for command */
-}
-
-return 0;
-}

@@ -9,42 +9,15 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <signal.h>
-#include <ctype.h>
 
-/* Error Codes */
-typedef enum
-{
-EXECUTION_SUCCESS,
-EXECUTION_FAILURE,
-FORK_FAILURE,
-COMMAND_NOT_FOUND
-} ExecutionResult;
-
-/*Prototypes */
+/* Function Prototypes */
 void parse_command(char *command, char *args[]);
-void display_prompt();
-char *read_command();
-void handle_sigint(int sig);
-ExecutionResult execute_command(char *args[]);
-
-/*Function to set up signal handlers */
-void setup_signal_handlers();
-
-/* Error handling function */
-void handle_error(const char *message);
-
-/* Memory freeing function */
-void free_memory(char *args[]);
-
-extern char **environ;
-char *program_name;
+void execute_command(char *args[]);
+void displayShellPrompt(void);
 
 #if 1
-
-char *shell;
-int line_number;
-
+char *shellName; /* Variable to hold the name of the shell program */
+int lineNumber; /* Variable to keep track of the line number in the shell */
 #endif
 
 #endif /* #ifndef SHELL_H */
