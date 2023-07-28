@@ -6,8 +6,35 @@
  */
 void execute_command(char *args[])
 {
+
 int status;
 pid_t pid;
+
+if (args[0] == NULL)
+{
+/* eMPTY COMMAND, DO NOThing*/
+
+return;
+}
+
+/* Handle the "exit" command*/
+
+if (strcmp(args[0], "exit") == 0)
+{
+int exit_status = 0;
+
+/* Check if there'' an argument provided after exit*/
+if (args[1] != NULL)
+{
+/*Convert the argument to an integer */
+exit_status = atoi(args[1]);
+}
+
+/*exit the shell with the specified status  */
+exit(exit_status);
+}
+
+/* execute other non-built-in commands using fork and execvp as before */
 
 pid = fork();
 if (pid == 0)
