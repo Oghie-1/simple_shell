@@ -48,7 +48,7 @@ while (1)
 {
 display_prompt();
 command = read_command();
-printf("</> ");
+printf("shell/afro: ");
 if (getline(&command, &n, stdin) == -1)
 {
 handle_error("getline() failed");
