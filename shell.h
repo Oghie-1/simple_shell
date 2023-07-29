@@ -30,6 +30,9 @@ int shell_unsetenv(char *args[]);
 /*alias type*/
 void alias_builtin(char *args[], Alias aliases[]);
 
+/* function  for the cd_builtin command */
+void cd_builtin(char *args[]);
+
 
 /* Declare the environ variable */
 extern char **environ;

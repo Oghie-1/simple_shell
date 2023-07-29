@@ -51,6 +51,11 @@ if (strcmp(args[0], "exit") == 0)
 break;
 }
 
+else if (strcmp(args[0], "cd") == 0)
+{
+cd_builtin(args); /* Execute the cd command */
+}
+
 execute_command(args); /* Execute the parsed command */
 }
 
