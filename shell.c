@@ -27,6 +27,30 @@ perror("Error: Cannot open the file\n");
 return 1;
 }
 
+/* Read commands from the file instead of stdin */
+while (getline(&command, &n, file) != -1)
+{
+command[strcspn(command, "\n")] = '\0'; /* Remove the newline character from the command */
+parse_command(command, args); /* Parse the command into arguments */
+
+/* Check if the user wants to exit the shell */
+if (strcmp(args[0], "exit") == 0)
+{
+break;
+}
+else if (strcmp(args[0], "cd") == 0)
+{
+cd_builtin(args); /* Execute the cd command */
+}
+
+execute_command(args); /* Execute the parsed command */
+}
+
+fclose(file); /* Close the file after reading */
+free(command);
+return 0;
+}
+
 /* Check if the shell is run in non-interactive mode */
 if (!isatty(STDIN_FILENO))
 {
@@ -70,5 +94,4 @@ execute_command(args); /* Execute the parsed command */
 
 free(command);
 return 0;
-}
 }
