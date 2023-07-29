@@ -12,6 +12,7 @@ int i = 0;
 
 while (token != NULL && i < MAX_NUM_ARGS)
 {
+if (token[0] != '#') /* Check if the token is not a comment (line starts with #)*/
 args[i] = token; /* Store each token (argument) in the arguments array */
 token = strtok(NULL, " "); /* Move to the next token */
 i++;

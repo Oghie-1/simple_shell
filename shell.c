@@ -12,11 +12,20 @@ char *command = NULL;
 size_t n = 0;
 char *args[MAX_NUM_ARGS + 1];
 
-#if 1
 shellName = *argv; /* Save the shell program name */
-#endif
+
 
 (void)argc; /* Suppress unused parameter warning */
+
+/* Check if a filename is provided as a command-line argument */
+if (argc == 2)
+{
+FILE *file = fopen(argv[1], "r");
+if (file == NULL)
+{
+perror("Error: Cannot open the file\n");
+return 1;
+}
 
 /* Check if the shell is run in non-interactive mode */
 if (!isatty(STDIN_FILENO))
@@ -62,4 +71,4 @@ execute_command(args); /* Execute the parsed command */
 free(command);
 return 0;
 }
-
+}
