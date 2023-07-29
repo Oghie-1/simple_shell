@@ -14,6 +14,12 @@
 void parse_command(char *command, char *args[]);
 void execute_command(char *args[]);
 void displayShellPrompt(void);
+/* Function to set a new environment variable or modify an existing one */
+int shell_setenv(char *args[]);
+
+/* Function to unset an environment variable */
+int shell_unsetenv(char *args[]);
+
 
 /* Declare the environ variable */
 extern char **environ;

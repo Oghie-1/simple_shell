@@ -47,6 +47,26 @@ env_var = *(environ++); /* Move to the next environment variable */
 return;
 }
 
+/* Handle the "setenv" command */
+if (strcmp(args[0], "setenv") == 0)
+{
+if (shell_setenv(args) != 0)
+{
+fprintf(stderr, "Error: Failed to set environment variable\n");
+}
+return;
+}
+
+/* Handle the "unsetenv" command */
+if (strcmp(args[0], "unsetenv") == 0)
+{
+if (shell_unsetenv(args) != 0)
+{
+fprintf(stderr, "Error: Failed to unset environment variable\n");
+}
+return;
+}
+
 /* execute other non-built-in commands using fork and execvp as before */
 
 pid = fork();
